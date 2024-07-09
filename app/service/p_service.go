@@ -4,7 +4,7 @@ import (
 	"bytes"
 	"encoding/json"
 	"github.com/gin-gonic/gin"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"poc-go/app/domain/dto"
 )
@@ -53,7 +53,7 @@ func (p PServiceImpl) PA(c *gin.Context) {
 	defer response.Body.Close()
 
 	// Read the response body
-	body, err := ioutil.ReadAll(response.Body)
+	body, err := io.ReadAll(response.Body)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": "Unable to read response"})
 		return
