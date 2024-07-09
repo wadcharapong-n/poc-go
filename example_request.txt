@@ -1,0 +1,224 @@
+curl --location 'localhost:8080/api/p' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "order_channel_id": "123",
+    "channel_order_no": "456",
+    "edc_serial_no": "789",
+    "payment_channel": "Credit Card",
+    "bank_code": "XYZ",
+    "order_type": "Dine-In",
+    "requestID": "REQ-001",
+    "branch_id": "BR-001",
+    "table_name": "Table 5",
+    "timezone": "GMT+7",
+    "order_customer_detail": {
+        "cust_name": "John Doe",
+        "phone_number": "1234567890",
+        "address": "123 Street Name, City, Country",
+        "comment": "No onions please",
+        "phone_prefix": "+1",
+        "country_code": "US"
+    },
+    "order_id": "ORDER-001",
+    "open_owner_id": "OWNER-001",
+    "close_owner_id": "OWNER-002",
+    "unique_order_code": "UNIQUE-123",
+    "table_id": "TBL-001",
+    "seat_amt": 4,
+    "kiosk_type": "Self-Service",
+    "open_order_dt": "2024-07-03T12:00:00Z",
+    "resv_id": "RESV-001",
+    "comment_obj": {
+        "company_prefix": "COMP",
+        "company_country_code": "US",
+        "company_name": "Company Inc.",
+        "company_address": "456 Business Ave, City, Country",
+        "company_tax_id": "TAX123",
+        "company_phone": "0987654321",
+        "company_branch": "Branch 1",
+        "company_email": "info@company.com"
+    },
+    "payment_id": "PMT-001",
+    "cancel_bill": false,
+    "mpos_credit_detail": {
+        "statusCode": "200",
+        "statusMessage": "Approved",
+        "approvalCode": "APPROVED",
+        "transactionID": "TXN-001",
+        "traceNo": "TRACE-001",
+        "cardNo": "4111111111111111",
+        "cardType": "VISA",
+        "cardHolderName": "John Doe",
+        "reference": "REF-001"
+    },
+    "bill_discount_promotion_id": "BDP-001",
+    "pro_user_id": "PRO-001",
+    "credit_card_id": "CC-001",
+    "qr_text": "QR-001",
+    "cash_drawer_code": "CD-001",
+    "prefix_cardNo": "4111",
+    "cardNo": "1111",
+    "bill_discount_type": "Percentage",
+    "host_name": "localhost",
+    "client_ip": "192.168.1.1",
+    "client_name": "Client1",
+    "rounding_amount": 0.05,
+    "rounding_type": "Up",
+    "buffet_package_id": "BP-001",
+    "cust_pmt_id": "CPMT-001",
+    "cust_pmt_ref": "CPMT-REF-001",
+    "running_book": "RB-001",
+    "running_no": "RN-001",
+    "pos_id": "POS-001",
+    "void_after_print_inv": false,
+    "cancel_menu_flag": false,
+    "latitude": 40.7128,
+    "longitude": -74.0060,
+    "tax_percent": 7.0,
+    "service_percent": 10.0,
+    "sub_amount": 100.0,
+    "service": 10.0,
+    "tax": 7.0,
+    "pmt_api_ref": "PMT-API-001",
+    "before_vat": 93.0,
+    "before_svc": 100.0,
+    "non_vat_amount": 0.0,
+    "promotion_ref_code": "PROMO-001",
+    "version": "1.0",
+    "crm_phone_no": "1234567890",
+    "crm_name": "John Doe",
+    "crmRedeemId": "CRM-REDEEM-001",
+    "fs_crm_history_id": "FS-CRM-HIST-001",
+    "fs_redeem_id": "FS-REDEEM-001",
+    "fs_crm_member_id": "FS-CRM-MEM-001",
+    "crm_system_id": "CRM-SYS-001",
+    "memberId": "MEM-001",
+    "fs_crm_promotion_uuid": "FS-CRM-PROMO-UUID-001",
+    "promotion_name": "Summer Sale",
+    "bill_discount_value": 10.0,
+    "bill_discounted_price": 90.0,
+    "bill_discount_reason": "Seasonal Discount",
+    "bill_discount_by": "Admin",
+    "payment_type": "Credit Card",
+    "payment_amount": 90.0,
+    "change_amount": 0.0,
+    "refund_amount": 0.0,
+    "discount_amount": 10.0,
+    "total_amount": 100.0,
+    "create_dt": "2024-07-03T12:00:00Z",
+    "receipt_no": "REC-001",
+    "tips_amount": 5.0,
+    "customer_name": "John Doe",
+    "phone_number": "1234567890",
+    "phone_prefix": "+1",
+    "country_code": "US",
+    "restaurant_id": "RES-001",
+    "split_payment_detail": [
+        {
+            "payment_type": "Cash",
+            "paid_amount": 50.0,
+            "split_amount": 40.0,
+            "change_amount": 10.0,
+            "credit_card_id": "CC-002",
+            "prefix_card_digit": "1234",
+            "card_digit": "5678",
+            "cust_pmt_ref": "CPMT-REF-002"
+        }
+    ],
+    "order_menu_list": [
+        {
+            "is_customer": true,
+            "served_time": "2024-07-03T12:15:00Z",
+            "served_by": "Server1",
+            "send_order_system_id": "SYS-001",
+            "action_by": "Chef1",
+            "order_menu_id": "OM-001",
+            "menu_order_time": "2024-07-03T12:05:00Z",
+            "menu_id": "MENU-001",
+            "menu_group_id": "MG-001",
+            "menu_group_name": "Appetizers",
+            "menu_name": "Spring Rolls",
+            "menu_comment": "Extra crispy",
+            "menu_price": 5.0,
+            "quantity": 2,
+            "send_order_by": "Chef1",
+            "option_list": [
+                {
+                    "payment_item_id": "PI-001",
+                    "void_flag": false,
+                    "quantity": 1,
+                    "action_by": "Chef1",
+                    "void_reason": "None"
+                }
+            ],
+            "reject_time": "2024-07-03T12:10:00Z",
+            "reject_by": "Chef2",
+            "reject_reason": "Out of stock",
+            "reject_flag": false,
+            "cancel_flag": false
+        }
+    ],
+    "pmt_menu_list": [
+        {
+            "action_by": "Admin",
+            "payment_item_id": "PMT-001",
+            "promotion_menu_id": "PROMO-001",
+            "promotion_menu_group_id": "PMG-001",
+            "void_flag": false,
+            "discount_type": "Percentage",
+            "discount_reason": "Loyalty Discount",
+            "promotion_id": "PROMO-002",
+            "override_promotion": true,
+            "pro_user_id": "PRO-002",
+            "menu_group_id": {
+                "cat_grp_id": "CAT-001",
+                "cat_grp_name": "Category1"
+            },
+            "menu_id": {
+                "cost_center": "CC-001",
+                "dept_code": "DPT-001"
+            },
+            "is_non_vat": false,
+            "price_with_option": 10.0,
+            "promotion_ref_code": "PROMO-REF-001",
+            "fs_crm_promotion_uuid": "FS-CRM-PROMO-UUID-002",
+            "promotion_name": "Holiday Discount",
+            "menu_name": "Pizza",
+            "menu_group_name": "Main Course",
+            "quantity": 1,
+            "price": 10.0,
+            "discounted_price": 9.0,
+            "discount_value": 1.0,
+            "void_reason": "None",
+            "order_menu_list": [
+                {
+                    "quantity": 1
+                }
+            ],
+            "option_list": [
+                {
+                    "payment_item_id": "PI-002",
+                    "void_flag": false,
+                    "quantity": 1,
+                    "action_by": "Chef2",
+                    "void_reason": "None"
+                }
+            ]
+        }
+    ],
+    "no_of_menu": 2,
+    "question_list": [
+        {
+            "q_id": "Q-001",
+            "choice_list": [
+                {
+                    "c_id": "C-001",
+                    "count": 5
+                }
+            ]
+        }
+    ],
+    "the_one_card_code": "ONE-001",
+    "branch_uuid": "BR-UUID-001"
+}
+'
