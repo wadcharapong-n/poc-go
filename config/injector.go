@@ -37,7 +37,15 @@ var authServiceSet = wire.NewSet(service.AuthServiceInit,
 	wire.Bind(new(service.AuthService), new(*service.AuthServiceImpl)),
 )
 
+var pCtrlSet = wire.NewSet(controller.PControllerInit,
+	wire.Bind(new(controller.PController), new(*controller.PControllerImpl)),
+)
+
+var pServiceSet = wire.NewSet(service.PServiceInit,
+	wire.Bind(new(service.PService), new(*service.PServiceImpl)),
+)
+
 func Init() *Initialization {
-	wire.Build(NewInitialization, db, userCtrlSet, userServiceSet, userRepoSet, roleRepoSet, authCtrlSet, authServiceSet)
+	wire.Build(NewInitialization, db, userCtrlSet, userServiceSet, userRepoSet, roleRepoSet, authCtrlSet, authServiceSet, pCtrlSet, pServiceSet)
 	return nil
 }

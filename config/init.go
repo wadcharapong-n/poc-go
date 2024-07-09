@@ -13,6 +13,8 @@ type Initialization struct {
 	RoleRepo repository.RoleRepository
 	AuthCtrl controller.AuthController
 	AuthSvc  service.AuthService
+	PCtrl    controller.PController
+	PSvc     service.PService
 }
 
 func NewInitialization(
@@ -21,7 +23,9 @@ func NewInitialization(
 	userCtrl controller.UserController,
 	roleRepo repository.RoleRepository,
 	authCtrl controller.AuthController,
-	authSvc service.AuthService) *Initialization {
+	authSvc service.AuthService,
+	pCtrl controller.PController,
+	pSvc service.PService) *Initialization {
 	return &Initialization{
 		userRepo: userRepo,
 		userSvc:  userService,
@@ -29,5 +33,7 @@ func NewInitialization(
 		RoleRepo: roleRepo,
 		AuthCtrl: authCtrl,
 		AuthSvc:  authSvc,
+		PCtrl:    pCtrl,
+		PSvc:     pSvc,
 	}
 }

@@ -27,6 +27,10 @@ func Init(init *config.Initialization) *gin.Engine {
 		user.PUT("/:userID", init.UserCtrl.UpdateUserData)
 		user.DELETE("/:userID", init.UserCtrl.DeleteUser)
 	}
+	{
+		p := api.Group("/p")
+		p.POST("", init.PCtrl.P)
+	}
 
 	return router
 }

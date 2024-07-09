@@ -23,7 +23,9 @@ func Init() *Initialization {
 	roleRepositoryImpl := repository.RoleRepositoryInit(gormDB)
 	authServiceImpl := service.AuthServiceInit(userRepositoryImpl)
 	authControllerImpl := controller.AuthControllerInit(authServiceImpl)
-	initialization := NewInitialization(userRepositoryImpl, userServiceImpl, userControllerImpl, roleRepositoryImpl, authControllerImpl, authServiceImpl)
+	pServiceImpl := service.PServiceInit()
+	pControllerImpl := controller.PControllerInit(pServiceImpl)
+	initialization := NewInitialization(userRepositoryImpl, userServiceImpl, userControllerImpl, roleRepositoryImpl, authControllerImpl, authServiceImpl, pControllerImpl, pServiceImpl)
 	return initialization
 }
 
@@ -42,3 +44,7 @@ var roleRepoSet = wire.NewSet(repository.RoleRepositoryInit, wire.Bind(new(repos
 var authCtrlSet = wire.NewSet(controller.AuthControllerInit, wire.Bind(new(controller.AuthController), new(*controller.AuthControllerImpl)))
 
 var authServiceSet = wire.NewSet(service.AuthServiceInit, wire.Bind(new(service.AuthService), new(*service.AuthServiceImpl)))
+
+var pCtrlSet = wire.NewSet(controller.PControllerInit, wire.Bind(new(controller.PController), new(*controller.PControllerImpl)))
+
+var pServiceSet = wire.NewSet(service.PServiceInit, wire.Bind(new(service.PService), new(*service.PServiceImpl)))
