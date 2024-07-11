@@ -1,0 +1,671 @@
+definitions:
+  dto.Channel:
+    properties:
+      channel_order_no:
+        example: "456"
+        type: string
+      order_channel_id:
+        example: "123"
+        type: string
+    type: object
+  dto.Choice:
+    properties:
+      c_id:
+        example: C-001
+        type: string
+      count:
+        example: 5
+        type: integer
+    type: object
+  dto.CommentObj:
+    properties:
+      company_address:
+        example: 456 Business Ave, City, Country
+        type: string
+      company_branch:
+        example: Branch 1
+        type: string
+      company_country_code:
+        example: US
+        type: string
+      company_email:
+        example: info@company.com
+        type: string
+      company_name:
+        example: Company Inc.
+        type: string
+      company_phone:
+        example: "0987654321"
+        type: string
+      company_prefix:
+        example: COMP
+        type: string
+      company_tax_id:
+        example: TAX123
+        type: string
+    type: object
+  dto.MenuGroupID:
+    properties:
+      cat_grp_id:
+        example: CAT-001
+        type: string
+      cat_grp_name:
+        example: Category1
+        type: string
+    type: object
+  dto.MenuID:
+    properties:
+      cost_center:
+        example: CC-001
+        type: string
+      dept_code:
+        example: DPT-001
+        type: string
+    type: object
+  dto.MposCreditDetail:
+    properties:
+      approvalCode:
+        example: APPROVED
+        type: string
+      cardHolderName:
+        example: John Doe
+        type: string
+      cardNo:
+        example: "4111111111111111"
+        type: string
+      cardType:
+        example: VISA
+        type: string
+      reference:
+        example: REF-001
+        type: string
+      statusCode:
+        example: "200"
+        type: string
+      statusMessage:
+        example: Approved
+        type: string
+      traceNo:
+        example: TRACE-001
+        type: string
+      transactionID:
+        example: TXN-001
+        type: string
+    type: object
+  dto.Option:
+    properties:
+      action_by:
+        example: Chef1
+        type: string
+      payment_item_id:
+        example: PI-001
+        type: string
+      quantity:
+        example: 1
+        type: integer
+      void_flag:
+        example: false
+        type: boolean
+      void_reason:
+        example: None
+        type: string
+    type: object
+  dto.OrderCustomerDetail:
+    properties:
+      address:
+        example: 123 Street Name, City, Country
+        type: string
+      comment:
+        example: No onions please
+        type: string
+      country_code:
+        example: US
+        type: string
+      cust_name:
+        example: John Doe
+        type: string
+      phone_number:
+        example: "1234567890"
+        type: string
+      phone_prefix:
+        example: "+1"
+        type: string
+    type: object
+  dto.OrderMenu:
+    properties:
+      action_by:
+        example: Chef1
+        type: string
+      cancel_flag:
+        example: false
+        type: boolean
+      is_customer:
+        example: true
+        type: boolean
+      menu_comment:
+        example: Extra crispy
+        type: string
+      menu_group_id:
+        example: MG-001
+        type: string
+      menu_group_name:
+        example: Appetizers
+        type: string
+      menu_id:
+        example: MENU-001
+        type: string
+      menu_name:
+        example: Spring Rolls
+        type: string
+      menu_order_time:
+        example: "2024-07-03T12:05:00Z"
+        type: string
+      menu_price:
+        example: 5
+        type: number
+      option_list:
+        items:
+          $ref: '#/definitions/dto.Option'
+        type: array
+      order_menu_id:
+        example: OM-001
+        type: string
+      quantity:
+        example: 2
+        type: integer
+      reject_by:
+        example: Chef2
+        type: string
+      reject_flag:
+        example: false
+        type: boolean
+      reject_reason:
+        example: Out of stock
+        type: string
+      reject_time:
+        example: "2024-07-03T12:10:00Z"
+        type: string
+      send_order_by:
+        example: Chef1
+        type: string
+      send_order_system_id:
+        example: SYS-001
+        type: string
+      served_by:
+        example: Server1
+        type: string
+      served_time:
+        example: "2024-07-03T12:15:00Z"
+        type: string
+    type: object
+  dto.PaRequest:
+    properties:
+      bank_code:
+        example: XYZ
+        type: string
+      before_svc:
+        example: 100
+        type: number
+      before_vat:
+        example: 93
+        type: number
+      bill_discount_by:
+        example: Admin
+        type: string
+      bill_discount_promotion_id:
+        example: BDP-001
+        type: string
+      bill_discount_reason:
+        example: Seasonal Discount
+        type: string
+      bill_discount_type:
+        example: Percentage
+        type: string
+      bill_discount_value:
+        example: 10
+        type: number
+      bill_discounted_price:
+        example: 90
+        type: number
+      branch_id:
+        example: BR-001
+        type: string
+      branch_uuid:
+        example: BR-UUID-001
+        type: string
+      buffet_package_id:
+        example: BP-001
+        type: string
+      cancel_bill:
+        example: false
+        type: boolean
+      cancel_menu_flag:
+        example: false
+        type: boolean
+      cardNo:
+        example: "1111"
+        type: string
+      cash_drawer_code:
+        example: CD-001
+        type: string
+      change_amount:
+        example: 0
+        type: number
+      channel:
+        $ref: '#/definitions/dto.Channel'
+      client_ip:
+        example: 192.168.1.1
+        type: string
+      client_name:
+        example: Client1
+        type: string
+      close_owner_id:
+        example: OWNER-002
+        type: string
+      comment_obj:
+        $ref: '#/definitions/dto.CommentObj'
+      country_code:
+        example: US
+        type: string
+      create_dt:
+        example: "2024-07-03T12:00:00Z"
+        type: string
+      credit_card_id:
+        example: CC-001
+        type: string
+      crm_name:
+        example: John Doe
+        type: string
+      crm_phone_no:
+        example: "1234567890"
+        type: string
+      crm_system_id:
+        example: CRM-SYS-001
+        type: string
+      crmRedeemId:
+        example: CRM-REDEEM-001
+        type: string
+      cust_pmt_id:
+        example: CPMT-001
+        type: string
+      cust_pmt_ref:
+        example: CPMT-REF-001
+        type: string
+      customer_name:
+        example: John Doe
+        type: string
+      discount_amount:
+        example: 10
+        type: number
+      edc_serial_no:
+        example: "789"
+        type: string
+      fs_crm_history_id:
+        example: FS-CRM-HIST-001
+        type: string
+      fs_crm_member_id:
+        example: FS-CRM-MEM-001
+        type: string
+      fs_crm_promotion_uuid:
+        example: FS-CRM-PROMO-UUID-001
+        type: string
+      fs_redeem_id:
+        example: FS-REDEEM-001
+        type: string
+      host_name:
+        example: localhost
+        type: string
+      kiosk_type:
+        example: Self-Service
+        type: string
+      latitude:
+        example: 40.7128
+        type: number
+      longitude:
+        example: -74.006
+        type: number
+      memberId:
+        example: MEM-001
+        type: string
+      mpos_credit_detail:
+        $ref: '#/definitions/dto.MposCreditDetail'
+      no_of_menu:
+        example: 2
+        type: integer
+      non_vat_amount:
+        example: 0
+        type: number
+      open_order_dt:
+        example: "2024-07-03T12:00:00Z"
+        type: string
+      open_owner_id:
+        example: OWNER-001
+        type: string
+      order_customer_detail:
+        $ref: '#/definitions/dto.OrderCustomerDetail'
+      order_id:
+        example: ORDER-001
+        type: string
+      order_menu_list:
+        items:
+          $ref: '#/definitions/dto.OrderMenu'
+        type: array
+      order_type:
+        example: Dine-In
+        type: string
+      payment_amount:
+        example: 90
+        type: number
+      payment_channel:
+        example: Credit Card
+        type: string
+      payment_id:
+        example: PMT-001
+        type: string
+      payment_type:
+        example: Credit Card
+        type: string
+      phone_number:
+        example: "1234567890"
+        type: string
+      phone_prefix:
+        example: "+1"
+        type: string
+      pmt_api_ref:
+        example: PMT-API-001
+        type: string
+      pmt_menu_list:
+        items:
+          $ref: '#/definitions/dto.PmtMenu'
+        type: array
+      pos_id:
+        example: POS-001
+        type: string
+      prefix_cardNo:
+        example: "4111"
+        type: string
+      pro_user_id:
+        example: PRO-001
+        type: string
+      promotion_name:
+        example: Summer Sale
+        type: string
+      promotion_ref_code:
+        example: PROMO-001
+        type: string
+      qr_text:
+        example: QR-001
+        type: string
+      question_list:
+        items:
+          $ref: '#/definitions/dto.Question'
+        type: array
+      receipt_no:
+        example: REC-001
+        type: string
+      refund_amount:
+        example: 0
+        type: number
+      requestID:
+        example: REQ-001
+        type: string
+      restaurant_id:
+        example: RES-001
+        type: string
+      resv_id:
+        example: RESV-001
+        type: string
+      rounding_amount:
+        example: 0.05
+        type: number
+      rounding_type:
+        example: Up
+        type: string
+      running_book:
+        example: RB-001
+        type: string
+      running_no:
+        example: RN-001
+        type: string
+      seat_amt:
+        example: 4
+        type: integer
+      service:
+        example: 10
+        type: number
+      service_percent:
+        example: 10
+        type: number
+      split_payment_detail:
+        items:
+          $ref: '#/definitions/dto.SplitPaymentDetail'
+        type: array
+      sub_amount:
+        example: 100
+        type: number
+      table_id:
+        example: TBL-001
+        type: string
+      table_name:
+        example: Table 5
+        type: string
+      tax:
+        example: 7
+        type: number
+      tax_percent:
+        example: 7
+        type: number
+      the_one_card_code:
+        example: ONE-001
+        type: string
+      timezone:
+        example: GMT+7
+        type: string
+      tips_amount:
+        example: 5
+        type: number
+      total_amount:
+        example: 100
+        type: number
+      unique_order_code:
+        example: UNIQUE-123
+        type: string
+      version:
+        example: "1.0"
+        type: string
+      void_after_print_inv:
+        example: false
+        type: boolean
+    type: object
+  dto.PaResponse:
+    properties:
+      flow_acct_resp:
+        example: Tax invoice response here
+        type: string
+      freshLivingResp:
+        example: No Data
+        type: string
+      is_void:
+        example: false
+        type: boolean
+      member_id:
+        example: MEM-004
+        type: string
+      order_id:
+        example: ORDER-001
+        type: string
+      payment_id:
+        example: PAY-123
+        type: string
+      payment_ref_id:
+        example: REF-002
+        type: string
+      pmt_time:
+        example: "2024-07-03T12:00:00Z"
+        type: string
+      qr_text:
+        example: HEADER_QR-QR-789
+        type: string
+      receipt_no:
+        example: REC-456
+        type: string
+      requestID:
+        example: REQ-001
+        type: string
+      res_mem_id:
+        example: MEM-003
+        type: string
+      review_point:
+        example: 5
+        type: integer
+      split_pmt_detail:
+        example: Split payment details here
+        type: string
+      success:
+        example: "1"
+        type: string
+    type: object
+  dto.PmtMenu:
+    properties:
+      action_by:
+        example: Admin
+        type: string
+      discount_reason:
+        example: Loyalty Discount
+        type: string
+      discount_type:
+        example: Percentage
+        type: string
+      discount_value:
+        example: 1
+        type: number
+      discounted_price:
+        example: 9
+        type: number
+      fs_crm_promotion_uuid:
+        example: FS-CRM-PROMO-UUID-002
+        type: string
+      is_non_vat:
+        example: false
+        type: boolean
+      menu_group_id:
+        $ref: '#/definitions/dto.MenuGroupID'
+      menu_group_name:
+        example: Main Course
+        type: string
+      menu_id:
+        $ref: '#/definitions/dto.MenuID'
+      menu_name:
+        example: Pizza
+        type: string
+      option_list:
+        items:
+          $ref: '#/definitions/dto.Option'
+        type: array
+      order_menu_list:
+        items:
+          $ref: '#/definitions/dto.OrderMenu'
+        type: array
+      override_promotion:
+        example: true
+        type: boolean
+      payment_item_id:
+        example: PMT-001
+        type: string
+      price:
+        example: 10
+        type: number
+      price_with_option:
+        example: 10
+        type: number
+      pro_user_id:
+        example: PRO-002
+        type: string
+      promotion_id:
+        example: PROMO-002
+        type: string
+      promotion_menu_group_id:
+        example: PMG-001
+        type: string
+      promotion_menu_id:
+        example: PROMO-001
+        type: string
+      promotion_name:
+        example: Holiday Discount
+        type: string
+      promotion_ref_code:
+        example: PROMO-REF-001
+        type: string
+      quantity:
+        example: 1
+        type: integer
+      void_flag:
+        example: false
+        type: boolean
+      void_reason:
+        example: None
+        type: string
+    type: object
+  dto.Question:
+    properties:
+      choice_list:
+        items:
+          $ref: '#/definitions/dto.Choice'
+        type: array
+      q_id:
+        example: Q-001
+        type: string
+    type: object
+  dto.SplitPaymentDetail:
+    properties:
+      card_digit:
+        example: "5678"
+        type: string
+      change_amount:
+        example: 10
+        type: number
+      credit_card_id:
+        example: CC-002
+        type: string
+      cust_pmt_ref:
+        example: CPMT-REF-002
+        type: string
+      paid_amount:
+        example: 50
+        type: number
+      payment_type:
+        example: Cash
+        type: string
+      prefix_card_digit:
+        example: "1234"
+        type: string
+      split_amount:
+        example: 40
+        type: number
+    type: object
+info:
+  contact: {}
+paths:
+  /p:
+    post:
+      consumes:
+      - application/json
+      description: Payment to another API
+      parameters:
+      - description: Payment Request
+        in: body
+        name: payment
+        required: true
+        schema:
+          $ref: '#/definitions/dto.PaRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/dto.PaResponse'
+      summary: Payment
+      tags:
+      - payment
+swagger: "2.0"

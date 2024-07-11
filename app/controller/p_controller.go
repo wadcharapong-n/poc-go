@@ -19,6 +19,15 @@ func PControllerInit(pService service.PService) *PControllerImpl {
 	}
 }
 
+// P godoc
+// @Summary Payment
+// @Description Payment to another API
+// @Tags payment
+// @Accept  json
+// @Produce  json
+// @Param payment body dto.PaRequest true "Payment Request"
+// @Success 200 {object} dto.PaResponse
+// @Router /p [post]
 func (p PControllerImpl) P(c *gin.Context) {
 	p.svc.PA(c)
 }
