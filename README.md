@@ -1,6 +1,6 @@
 POC Gin Framework with Go 1.22
 
-How to Run 
+How to first start 
 - create database
   - postgres DB
   - database name : gin
@@ -14,4 +14,5 @@ How to Run
       - INSERT INTO public.users (id, name, email, password, status, role_id, created_at, updated_at, deleted_at)
         VALUES (2, 'user2', 'admin@test.test', 'password', 1, 2, '2024-07-04 00:00:00.000000 +00:00', '2024-07-04 00:00:00.000000 +00:00', null);
 - run -> go mod tidy
-- run main.go
+- run -> swag init
+- run -> go run main.go
