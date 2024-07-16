@@ -125,6 +125,18 @@ definitions:
         example: "2"
         type: string
     type: object
+  dto.Menu:
+    properties:
+      delete_flag:
+        example: false
+        type: boolean
+      menu_id:
+        example: 123
+        type: integer
+      pkg_menu_id:
+        example: 456
+        type: integer
+    type: object
   dto.MenuGroupID:
     properties:
       cat_grp_id:
@@ -606,6 +618,31 @@ definitions:
         example: "1"
         type: string
     type: object
+  dto.Package:
+    properties:
+      branch_id:
+        type: string
+      description:
+        type: string
+      menu_list:
+        items:
+          $ref: '#/definitions/dto.Menu'
+        type: array
+      name:
+        type: string
+      owner_id:
+        type: string
+      package_id:
+        type: string
+      pkg_img_key:
+        type: string
+      requestID:
+        type: string
+      sub_pkg_menu_list:
+        items:
+          $ref: '#/definitions/dto.SubPkgMenu'
+        type: array
+    type: object
   dto.Permission:
     properties:
       desc:
@@ -706,6 +743,49 @@ definitions:
         example: Q-001
         type: string
     type: object
+  dto.SavePacResponse:
+    properties:
+      package_list:
+        $ref: '#/definitions/dto.Package'
+      requestID:
+        example: REQ-001
+        type: string
+      success:
+        example: "1"
+        type: string
+    type: object
+  dto.SavePackageRequest:
+    properties:
+      branch_id:
+        example: Branch001
+        type: string
+      description:
+        example: Description of the package
+        type: string
+      menu_list:
+        items:
+          $ref: '#/definitions/dto.Menu'
+        type: array
+      name:
+        example: Example Name
+        type: string
+      owner_id:
+        example: Owner123
+        type: string
+      package_id:
+        example: Package123
+        type: string
+      pkg_img_key:
+        example: ImgKey123
+        type: string
+      requestID:
+        example: REQ123456
+        type: string
+      sub_pkg_menu_list:
+        items:
+          $ref: '#/definitions/dto.SubPkgMenu'
+        type: array
+    type: object
   dto.SplitPaymentDetail:
     properties:
       card_digit:
@@ -732,6 +812,18 @@ definitions:
       split_amount:
         example: 40
         type: number
+    type: object
+  dto.SubPkgMenu:
+    properties:
+      menu_id:
+        example: 123
+        type: integer
+      name:
+        example: abc
+        type: string
+      price:
+        example: 100
+        type: integer
     type: object
 host: localhost:8080
 info:
@@ -815,6 +907,28 @@ paths:
       summary: Payment
       tags:
       - payment
+  /savePac:
+    post:
+      consumes:
+      - application/json
+      description: Package to another API
+      parameters:
+      - description: SavePackageRequest
+        in: body
+        name: payment
+        required: true
+        schema:
+          $ref: '#/definitions/dto.SavePackageRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/dto.SavePacResponse'
+      summary: Package
+      tags:
+      - Package
 schemes:
 - http
 swagger: "2.0"

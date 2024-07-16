@@ -45,6 +45,10 @@ func Init(init *config.Initialization) *gin.Engine {
 		p := api.Group("/d")
 		p.DELETE("", init.PCtrl.D)
 	}
+	{
+		p := api.Group("/savePac")
+		p.POST("", init.PCtrl.SavePac)
+	}
 
 	return router
 }

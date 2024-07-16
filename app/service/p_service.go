@@ -15,6 +15,7 @@ type PService interface {
 	PA(c *gin.Context)
 	BR(c *gin.Context)
 	DO(c *gin.Context)
+	SavePac(c *gin.Context)
 }
 
 type PServiceImpl struct {
@@ -196,5 +197,38 @@ func (p PServiceImpl) DO(c *gin.Context) {
 		c.JSON(http.StatusBadRequest, gin.H{"error Marshal": err.Error()})
 		return
 	}
+	c.JSON(http.StatusOK, responseBody)
+}
+
+func (p PServiceImpl) SavePac(c *gin.Context) {
+	var requestBody dto.SavePackageRequest
+	// Bind the JSON to the struct
+	if err := c.ShouldBindJSON(&requestBody); err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		return
+	}
+	// todo send to another API here
+
+	responseBody := dto.SavePacResponse{
+		Success:   "1",
+		RequestID: requestBody.RequestID,
+		PackageList: dto.Package{
+
+			Name:        "Example Name",
+			RequestID:   "REQ123456",
+			PkgImgKey:   "ImgKey123",
+			BranchID:    "Branch001",
+			PackageID:   "Package123",
+			Description: "Description of the package",
+			OwnerID:     "Owner123",
+			SubPkgMenuList: []dto.SubPkgMenu{
+				{MenuID: 1, Name: "abc", Price: 100},
+			},
+			MenuList: []dto.Menu{
+				{MenuID: 1, PkgMenuID: 1, DeleteFlag: false},
+			},
+		},
+	}
+
 	c.JSON(http.StatusOK, responseBody)
 }

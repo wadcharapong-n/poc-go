@@ -132,6 +132,40 @@ const docTemplate = `{
                     }
                 }
             }
+        },
+        "/savePac": {
+            "post": {
+                "description": "Package to another API",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Package"
+                ],
+                "summary": "Package",
+                "parameters": [
+                    {
+                        "description": "SavePackageRequest",
+                        "name": "payment",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/dto.SavePackageRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/dto.SavePacResponse"
+                        }
+                    }
+                }
+            }
         }
     },
     "definitions": {
@@ -307,6 +341,23 @@ const docTemplate = `{
                 "under_id": {
                     "type": "string",
                     "example": "2"
+                }
+            }
+        },
+        "dto.Menu": {
+            "type": "object",
+            "properties": {
+                "delete_flag": {
+                    "type": "boolean",
+                    "example": false
+                },
+                "menu_id": {
+                    "type": "integer",
+                    "example": 123
+                },
+                "pkg_menu_id": {
+                    "type": "integer",
+                    "example": 456
                 }
             }
         },
@@ -964,6 +1015,44 @@ const docTemplate = `{
                 }
             }
         },
+        "dto.Package": {
+            "type": "object",
+            "properties": {
+                "branch_id": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "menu_list": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/dto.Menu"
+                    }
+                },
+                "name": {
+                    "type": "string"
+                },
+                "owner_id": {
+                    "type": "string"
+                },
+                "package_id": {
+                    "type": "string"
+                },
+                "pkg_img_key": {
+                    "type": "string"
+                },
+                "requestID": {
+                    "type": "string"
+                },
+                "sub_pkg_menu_list": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/dto.SubPkgMenu"
+                    }
+                }
+            }
+        },
         "dto.Permission": {
             "type": "object",
             "properties": {
@@ -1103,6 +1192,67 @@ const docTemplate = `{
                 }
             }
         },
+        "dto.SavePacResponse": {
+            "type": "object",
+            "properties": {
+                "package_list": {
+                    "$ref": "#/definitions/dto.Package"
+                },
+                "requestID": {
+                    "type": "string",
+                    "example": "REQ-001"
+                },
+                "success": {
+                    "type": "string",
+                    "example": "1"
+                }
+            }
+        },
+        "dto.SavePackageRequest": {
+            "type": "object",
+            "properties": {
+                "branch_id": {
+                    "type": "string",
+                    "example": "Branch001"
+                },
+                "description": {
+                    "type": "string",
+                    "example": "Description of the package"
+                },
+                "menu_list": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/dto.Menu"
+                    }
+                },
+                "name": {
+                    "type": "string",
+                    "example": "Example Name"
+                },
+                "owner_id": {
+                    "type": "string",
+                    "example": "Owner123"
+                },
+                "package_id": {
+                    "type": "string",
+                    "example": "Package123"
+                },
+                "pkg_img_key": {
+                    "type": "string",
+                    "example": "ImgKey123"
+                },
+                "requestID": {
+                    "type": "string",
+                    "example": "REQ123456"
+                },
+                "sub_pkg_menu_list": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/dto.SubPkgMenu"
+                    }
+                }
+            }
+        },
         "dto.SplitPaymentDetail": {
             "type": "object",
             "properties": {
@@ -1137,6 +1287,23 @@ const docTemplate = `{
                 "split_amount": {
                     "type": "number",
                     "example": 40
+                }
+            }
+        },
+        "dto.SubPkgMenu": {
+            "type": "object",
+            "properties": {
+                "menu_id": {
+                    "type": "integer",
+                    "example": 123
+                },
+                "name": {
+                    "type": "string",
+                    "example": "abc"
+                },
+                "price": {
+                    "type": "integer",
+                    "example": 100
                 }
             }
         }

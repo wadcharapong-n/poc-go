@@ -9,6 +9,7 @@ type PController interface {
 	P(c *gin.Context)
 	B(c *gin.Context)
 	D(c *gin.Context)
+	SavePac(c *gin.Context)
 }
 
 type PControllerImpl struct {
@@ -56,4 +57,17 @@ func (p PControllerImpl) B(c *gin.Context) {
 // @Router /d [delete]
 func (p PControllerImpl) D(c *gin.Context) {
 	p.svc.DO(c)
+}
+
+// SavePac godoc
+// @Summary Package
+// @Description Package to another API
+// @Tags Package
+// @Accept  json
+// @Produce  json
+// @Param payment body dto.SavePackageRequest true "SavePackageRequest"
+// @Success 200 {object} dto.SavePacResponse
+// @Router /savePac [post]
+func (p PControllerImpl) SavePac(c *gin.Context) {
+	p.svc.SavePac(c)
 }
