@@ -7,6 +7,7 @@ import (
 
 type PController interface {
 	P(c *gin.Context)
+	B(c *gin.Context)
 }
 
 type PControllerImpl struct {
@@ -30,4 +31,17 @@ func PControllerInit(pService service.PService) *PControllerImpl {
 // @Router /p [post]
 func (p PControllerImpl) P(c *gin.Context) {
 	p.svc.PA(c)
+}
+
+// B godoc
+// @Summary Branch
+// @Description Branch to another API
+// @Tags Branch
+// @Accept  json
+// @Produce  json
+// @Param payment query dto.BRequest true "getEmployeeListByBranch"
+// @Success 200 {object} dto.BrResponse
+// @Router /b [get]
+func (p PControllerImpl) B(c *gin.Context) {
+	p.svc.BR(c)
 }

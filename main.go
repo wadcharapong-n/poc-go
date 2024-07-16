@@ -15,6 +15,12 @@ func init() {
 	config.InitLog()
 }
 
+// Init @title Swagger Example API
+// @description This is a sample server
+// @version 1.0
+// @BasePath /api
+// @host localhost:8080
+// @schemes http
 func main() {
 	port := os.Getenv("PORT")
 

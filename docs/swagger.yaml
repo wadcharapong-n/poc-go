@@ -1,4 +1,22 @@
+basePath: /api
 definitions:
+  dto.BrResponse:
+    properties:
+      employee_list:
+        items:
+          $ref: '#/definitions/dto.Employee'
+        type: array
+      permission_list:
+        items:
+          $ref: '#/definitions/dto.Permission'
+        type: array
+      requestID:
+        example: REQ-001
+        type: string
+      success:
+        example: "1"
+        type: string
+    type: object
   dto.Channel:
     properties:
       channel_order_no:
@@ -42,6 +60,42 @@ definitions:
         type: string
       company_tax_id:
         example: TAX123
+        type: string
+    type: object
+  dto.Employee:
+    properties:
+      email:
+        example: john.doe@example.com
+        type: string
+      end_time:
+        example: 2023-07-03T15:04:05Z07:00
+        type: string
+      firstname:
+        example: John
+        type: string
+      image_key:
+        example: img123456
+        type: string
+      lastname:
+        example: Doe
+        type: string
+      owner_class_id:
+        example: "001"
+        type: string
+      owner_class_name:
+        example: VIP
+        type: string
+      owner_id:
+        example: "1"
+        type: string
+      phonenumber:
+        example: 555-1234
+        type: string
+      start_time:
+        example: 2023-07-01T15:04:05Z07:00
+        type: string
+      under_id:
+        example: "2"
         type: string
     type: object
   dto.MenuGroupID:
@@ -525,6 +579,15 @@ definitions:
         example: "1"
         type: string
     type: object
+  dto.Permission:
+    properties:
+      desc:
+        example: permission 1
+        type: string
+      id:
+        example: "1"
+        type: string
+    type: object
   dto.PmtMenu:
     properties:
       action_by:
@@ -643,9 +706,48 @@ definitions:
         example: 40
         type: number
     type: object
+host: localhost:8080
 info:
   contact: {}
+  description: This is a sample server Petstore server.
+  version: "1.0"
 paths:
+  /b:
+    get:
+      consumes:
+      - application/json
+      description: Branch to another API
+      parameters:
+      - example: "123"
+        in: query
+        name: branch_id
+        type: string
+      - example: Details about the client
+        in: query
+        name: client_detail
+        type: string
+      - example: "456"
+        in: query
+        name: requestID
+        type: string
+      - example: UTC+0
+        in: query
+        name: timezone
+        type: string
+      - example: 1.0.2
+        in: query
+        name: wn_ios_version
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/dto.BrResponse'
+      summary: Branch
+      tags:
+      - Branch
   /p:
     post:
       consumes:
@@ -668,4 +770,6 @@ paths:
       summary: Payment
       tags:
       - payment
+schemes:
+- http
 swagger: "2.0"

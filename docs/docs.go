@@ -16,6 +16,61 @@ const docTemplate = `{
     "host": "{{.Host}}",
     "basePath": "{{.BasePath}}",
     "paths": {
+        "/b": {
+            "get": {
+                "description": "Branch to another API",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Branch"
+                ],
+                "summary": "Branch",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "example": "123",
+                        "name": "branch_id",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "example": "Details about the client",
+                        "name": "client_detail",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "example": "456",
+                        "name": "requestID",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "example": "UTC+0",
+                        "name": "timezone",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "example": "1.0.2",
+                        "name": "wn_ios_version",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/dto.BrResponse"
+                        }
+                    }
+                }
+            }
+        },
         "/p": {
             "post": {
                 "description": "Payment to another API",
@@ -52,6 +107,31 @@ const docTemplate = `{
         }
     },
     "definitions": {
+        "dto.BrResponse": {
+            "type": "object",
+            "properties": {
+                "employee_list": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/dto.Employee"
+                    }
+                },
+                "permission_list": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/dto.Permission"
+                    }
+                },
+                "requestID": {
+                    "type": "string",
+                    "example": "REQ-001"
+                },
+                "success": {
+                    "type": "string",
+                    "example": "1"
+                }
+            }
+        },
         "dto.Channel": {
             "type": "object",
             "properties": {
@@ -112,6 +192,55 @@ const docTemplate = `{
                 "company_tax_id": {
                     "type": "string",
                     "example": "TAX123"
+                }
+            }
+        },
+        "dto.Employee": {
+            "type": "object",
+            "properties": {
+                "email": {
+                    "type": "string",
+                    "example": "john.doe@example.com"
+                },
+                "end_time": {
+                    "type": "string",
+                    "example": "2023-07-03T15:04:05Z07:00"
+                },
+                "firstname": {
+                    "type": "string",
+                    "example": "John"
+                },
+                "image_key": {
+                    "type": "string",
+                    "example": "img123456"
+                },
+                "lastname": {
+                    "type": "string",
+                    "example": "Doe"
+                },
+                "owner_class_id": {
+                    "type": "string",
+                    "example": "001"
+                },
+                "owner_class_name": {
+                    "type": "string",
+                    "example": "VIP"
+                },
+                "owner_id": {
+                    "type": "string",
+                    "example": "1"
+                },
+                "phonenumber": {
+                    "type": "string",
+                    "example": "555-1234"
+                },
+                "start_time": {
+                    "type": "string",
+                    "example": "2023-07-01T15:04:05Z07:00"
+                },
+                "under_id": {
+                    "type": "string",
+                    "example": "2"
                 }
             }
         },
@@ -769,6 +898,19 @@ const docTemplate = `{
                 }
             }
         },
+        "dto.Permission": {
+            "type": "object",
+            "properties": {
+                "desc": {
+                    "type": "string",
+                    "example": "permission 1"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "1"
+                }
+            }
+        },
         "dto.PmtMenu": {
             "type": "object",
             "properties": {
@@ -937,12 +1079,12 @@ const docTemplate = `{
 
 // SwaggerInfo holds exported Swagger Info so clients can modify it
 var SwaggerInfo = &swag.Spec{
-	Version:          "",
-	Host:             "",
-	BasePath:         "",
-	Schemes:          []string{},
+	Version:          "1.0",
+	Host:             "localhost:8080",
+	BasePath:         "/api",
+	Schemes:          []string{"http"},
 	Title:            "",
-	Description:      "",
+	Description:      "This is a sample server Petstore server.",
 	InfoInstanceName: "swagger",
 	SwaggerTemplate:  docTemplate,
 }
