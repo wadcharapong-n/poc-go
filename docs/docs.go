@@ -18,10 +18,7 @@ const docTemplate = `{
     "paths": {
         "/b": {
             "get": {
-                "description": "Branch to another API",
-                "consumes": [
-                    "application/json"
-                ],
+                "description": "getEmployeeListByBranch to another API",
                 "produces": [
                     "application/json"
                 ],
@@ -66,6 +63,37 @@ const docTemplate = `{
                         "description": "OK",
                         "schema": {
                             "$ref": "#/definitions/dto.BrResponse"
+                        }
+                    }
+                }
+            }
+        },
+        "/d": {
+            "delete": {
+                "description": "deleteOwnerClass to another API",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Branch"
+                ],
+                "summary": "Delete something",
+                "parameters": [
+                    {
+                        "description": "request",
+                        "name": "payment",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/dto.DRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/dto.DResponse"
                         }
                     }
                 }
@@ -192,6 +220,44 @@ const docTemplate = `{
                 "company_tax_id": {
                     "type": "string",
                     "example": "TAX123"
+                }
+            }
+        },
+        "dto.DRequest": {
+            "type": "object",
+            "properties": {
+                "owner_class_id": {
+                    "type": "string",
+                    "example": "123"
+                },
+                "owner_id": {
+                    "type": "string",
+                    "example": "789"
+                },
+                "request_id": {
+                    "type": "string",
+                    "example": "456"
+                },
+                "restaurant_id": {
+                    "type": "string",
+                    "example": "101"
+                }
+            }
+        },
+        "dto.DResponse": {
+            "type": "object",
+            "properties": {
+                "message": {
+                    "type": "string",
+                    "example": "Deleted"
+                },
+                "requestID": {
+                    "type": "string",
+                    "example": "REQ-001"
+                },
+                "success": {
+                    "type": "string",
+                    "example": "1"
                 }
             }
         },
@@ -1084,7 +1150,7 @@ var SwaggerInfo = &swag.Spec{
 	BasePath:         "/api",
 	Schemes:          []string{"http"},
 	Title:            "",
-	Description:      "This is a sample server Petstore server.",
+	Description:      "This is a sample server",
 	InfoInstanceName: "swagger",
 	SwaggerTemplate:  docTemplate,
 }

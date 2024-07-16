@@ -8,6 +8,7 @@ import (
 type PController interface {
 	P(c *gin.Context)
 	B(c *gin.Context)
+	D(c *gin.Context)
 }
 
 type PControllerImpl struct {
@@ -35,13 +36,24 @@ func (p PControllerImpl) P(c *gin.Context) {
 
 // B godoc
 // @Summary Branch
-// @Description Branch to another API
+// @Description getEmployeeListByBranch to another API
 // @Tags Branch
-// @Accept  json
 // @Produce  json
-// @Param payment query dto.BRequest true "getEmployeeListByBranch"
+// @Param payment query dto.BRequest true "request"
 // @Success 200 {object} dto.BrResponse
 // @Router /b [get]
 func (p PControllerImpl) B(c *gin.Context) {
 	p.svc.BR(c)
+}
+
+// D godoc
+// @Summary Delete something
+// @Description deleteOwnerClass to another API
+// @Tags Branch
+// @Produce  json
+// @Param payment body dto.DRequest true "request"
+// @Success 200 {object} dto.DResponse
+// @Router /d [delete]
+func (p PControllerImpl) D(c *gin.Context) {
+	p.svc.DO(c)
 }

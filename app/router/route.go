@@ -41,6 +41,10 @@ func Init(init *config.Initialization) *gin.Engine {
 		p := api.Group("/b")
 		p.GET("", init.PCtrl.B)
 	}
+	{
+		p := api.Group("/d")
+		p.DELETE("", init.PCtrl.D)
+	}
 
 	return router
 }

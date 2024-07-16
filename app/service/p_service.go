@@ -14,6 +14,7 @@ import (
 type PService interface {
 	PA(c *gin.Context)
 	BR(c *gin.Context)
+	DO(c *gin.Context)
 }
 
 type PServiceImpl struct {
@@ -130,6 +131,66 @@ func (p PServiceImpl) BR(c *gin.Context) {
 		return
 	}
 	var responseBody dto.BrResponse
+	err = json.Unmarshal(body, &responseBody)
+	if err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error Marshal": err.Error()})
+		return
+	}
+	c.JSON(http.StatusOK, responseBody)
+}
+
+func (p PServiceImpl) DO(c *gin.Context) {
+	var requestBody dto.DRequest
+	// Bind the JSON to the struct
+	if err := c.ShouldBindJSON(&requestBody); err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		return
+	}
+	_, err := json.Marshal(&requestBody)
+	if err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error Marshal": err.Error()})
+		return
+	}
+
+	data := url.Values{}
+	data.Set("request_id", requestBody.RequestID)
+	data.Set("owner_class_id", requestBody.OwnerClassID)
+	data.Set("owner_id", requestBody.OwnerID)
+	data.Set("restaurant_id", requestBody.RestaurantID)
+
+	// The URL of the API you want to call
+	apiURL := "https://test-fs.free.beeceptor.com/d"
+
+	// Create a new POST request
+	request, err := http.NewRequest("DELETE", apiURL, bytes.NewBufferString(data.Encode()))
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{"error": "Unable to create request"})
+		return
+	}
+	request.Header.Set("Content-Type", "application/x-www-form-urlencoded")
+
+	// Make the POST request
+	client := &http.Client{}
+	response, err := client.Do(request)
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{"error": "Unable to send request"})
+		return
+	}
+	defer response.Body.Close()
+
+	// Read the response body
+	body, err := io.ReadAll(response.Body)
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{"error": "Unable to read response"})
+		return
+	}
+
+	// Check for a successful response
+	if response.StatusCode != http.StatusOK {
+		c.JSON(response.StatusCode, gin.H{"error": "API responded with error", "details": string(body)})
+		return
+	}
+	var responseBody dto.DResponse
 	err = json.Unmarshal(body, &responseBody)
 	if err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error Marshal": err.Error()})
